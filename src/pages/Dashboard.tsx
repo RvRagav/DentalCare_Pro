@@ -6,7 +6,7 @@ function Dashboard() {
   const { user } = useUser()
 
   const [recentAppointments] = useState([
-    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-25, 10:00 AM', status: 'Confirmed' },
+    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-28, 10:00 AM', status: 'Confirmed' },
     { patient: 'Mike Smith', dentist: 'Dr. Johnson', date: '2025-04-19, 11:30 AM', status: 'Pending' },
     { patient: 'Emma Davis', dentist: 'Dr. Ragavan', date: '2025-04-20, 2:00 PM', status: 'In Progress' },
     { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-22, 3:00 PM', status: 'Completed' },
@@ -182,7 +182,7 @@ function Dashboard() {
       <div className="text-center mb-4">
       <h1 className="mb-4">Welcome, {user?.name}</h1>
 
-      <div className="row g-4 text-center">
+      <div className="row g-4 text-center d-flex justify-content-center overflow-hidden">
         {renderCards()}
       </div>
 

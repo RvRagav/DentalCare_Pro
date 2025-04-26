@@ -27,7 +27,7 @@ function Footer() {
           </div>
         </div>
         <div className="text-center mt-3">
-          <small>© 2023 Company Name. All Rights Reserved.</small>
+          <small>© 2025 DentalCare Pro. All Rights Reserved.</small>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { UserProvider } from './contexts/UserContext.tsx'
+import { UserProvider, useUser } from './contexts/UserContext.tsx'
 import Navbar from './components/Navbar.tsx'
 import Login from './pages/Login.tsx'
 import Dashboard from './pages/Dashboard.tsx'
@@ -15,11 +15,13 @@ import Footer from './components/Footer.tsx'
 import Home from './pages/Home.tsx'
 
 function App() {
+  const { user } = useUser();
   return (
     <UserProvider>
       <Router>
         <div className="min-vh-100 bg-light">
-          <Navbar />
+          <div className="sticky-top"><Navbar /></div>
+          
           <div className="container py-4">
             <Routes>
               <Route path="/" element={<Navigate to="/home" replace />} />
@@ -27,7 +29,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgetPassword />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={user ? <Dashboard />: <Navigate to="/login" replace />} />
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/patients" element={<Patients />} />
               <Route path="/profile" element={<Profile />} />

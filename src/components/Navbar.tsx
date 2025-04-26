@@ -15,13 +15,13 @@ function Navbar() {
   }
 
   const showDashboard = user && ['Admin', 'Dentist', 'Receptionist'].includes(user.role)
-  const showAppointments = user && ['Admin', 'Dentist', 'Receptionist', 'Patient'].includes(user.role)
+  const showAppointments = user && ['Admin', 'Dentist', 'Receptionist'].includes(user.role)
   const showPatients = user && ['Admin', 'Receptionist'].includes(user.role)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to={user? "/dashboard": "/"}>
           DentalCare Pro
         </Link>
 
