@@ -12,7 +12,7 @@ function Footer() {
           </div>
           <div className="col-md-4">
             <h5>About Us</h5>
-            <p>We are a company dedicated to providing excellent service.</p>
+            <p>We are a hospital committed to delivering compassionate and quality healthcare services.</p>
           </div>
           <div className="col-md-4">
             <h5>Links</h5>
@@ -21,7 +21,7 @@ function Footer() {
                 <a href="/privacy-policy" className="text-white">Privacy Policy</a>
               </li>
               <li>
-                <a href="/terms-of-service" className="text-white">Terms of Service</a>
+                <a href="/terms-conditions" className="text-white">Terms of Service</a>
               </li>
             </ul>
           </div>

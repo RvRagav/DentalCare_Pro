@@ -17,6 +17,7 @@ function Login() {
         e.preventDefault()
         try {
             await login(email, password, role)
+            localStorage.setItem('user', JSON.stringify({ name:'Ragavan', email, role }))
             navigate('/dashboard')
         } catch (error) {
             console.error('Login failed:', error)

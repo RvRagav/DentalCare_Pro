@@ -1,4 +1,4 @@
-import  { createContext, useContext, useState, ReactNode } from 'react'
+import  { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 
 export type UserRole = 'Admin' | 'Dentist' | 'Receptionist' | 'Patient'
 
@@ -18,13 +18,16 @@ interface UserContextType {
 export const UserContext = createContext<UserContextType | undefined>(undefined)
 
 export function UserProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null)
 
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
   const login = async (email: string, password: string, role: UserRole) => {
     // Mock login - replace with actual API call
     const mockUser: User = {
       id: '1',
-      name: 'Ragavan',
+      name: 'Ragavan' ,
       email: email,
       role: role,
     }

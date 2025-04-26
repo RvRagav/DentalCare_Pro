@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { UserProvider, useUser } from './contexts/UserContext.tsx'
+import { UserProvider } from './contexts/UserContext.tsx'
 import Navbar from './components/Navbar.tsx'
 import Login from './pages/Login.tsx'
 import Dashboard from './pages/Dashboard.tsx'
@@ -13,9 +13,10 @@ import Doctors from './pages/Doctors_page.tsx'
 import Facilities from './pages/Facilities.tsx'
 import Footer from './components/Footer.tsx'
 import Home from './pages/Home.tsx'
+import TermsConditions from './pages/TermsConditions.tsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.tsx'
 
 function App() {
-  const { user } = useUser();
   return (
     <UserProvider>
       <Router>
@@ -29,13 +30,15 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgetPassword />} />
-              <Route path="/dashboard" element={user ? <Dashboard />: <Navigate to="/login" replace />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/patients" element={<Patients />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/treatments" element={<Treatments />} />
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/facilities" element={<Facilities />} />
+              <Route path="/terms-conditions" element={<TermsConditions/>} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
             </Routes>
           </div>
           <Footer />

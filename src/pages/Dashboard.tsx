@@ -4,7 +4,9 @@ import { useState } from 'react'
 
 function Dashboard() {
   const { user } = useUser()
-
+  if (user) {
+    user.name = 'Ragavan'
+  }
   const [recentAppointments] = useState([
     { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-28, 10:00 AM', status: 'Confirmed' },
     { patient: 'Mike Smith', dentist: 'Dr. Johnson', date: '2025-04-19, 11:30 AM', status: 'Pending' },
@@ -42,7 +44,7 @@ function Dashboard() {
       )
     }
 
-    if (['Admin', 'Dentist', 'Receptionist', 'Patient'].includes(user.role)) {
+    if (['Admin', 'Dentist', 'Receptionist'].includes(user.role)) {
       cards.push(
         <div className="col-md-3" key="appointments">
           <div className="card bg-success text-white">

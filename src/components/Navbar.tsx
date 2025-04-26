@@ -14,7 +14,7 @@ function Navbar() {
     navigate('/login')
   }
 
-  const showDashboard = user && ['Admin', 'Dentist', 'Receptionist'].includes(user.role)
+  const showDashboard = user && ['Admin', 'Dentist', 'Receptionist', 'Patient'].includes(user.role)
   const showAppointments = user && ['Admin', 'Dentist', 'Receptionist'].includes(user.role)
   const showPatients = user && ['Admin', 'Receptionist'].includes(user.role)
 
