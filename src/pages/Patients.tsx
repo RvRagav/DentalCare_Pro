@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { Plus, Search } from 'lucide-react'
 import { useUser } from '../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 
 interface Patient {
@@ -14,7 +15,7 @@ interface Patient {
 
 function Patients() {
   const { user } = useUser()
-
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
   const [patients] = useState<Patient[]>([
@@ -81,7 +82,7 @@ function Patients() {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1>Patients</h1>
         {canAddPatient && (
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" onClick={() => {navigate('/patients/new')}}>
             <Plus size={18} className="me-1" />
             New Patient
           </button>
@@ -159,7 +160,7 @@ function Patients() {
                       </span>
                     </td>
                     <td>
-                      <button className="btn btn-sm btn-outline-primary me-1">View</button>
+                      
                       {canEdit && (
                         <>
                           <button className="btn btn-sm btn-outline-secondary me-1">Edit</button>

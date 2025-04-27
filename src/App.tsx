@@ -15,6 +15,8 @@ import Footer from './components/Footer.tsx'
 import Home from './pages/Home.tsx'
 import TermsConditions from './pages/TermsConditions.tsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.tsx'
+import AppointmentForm from './pages/AppointmentForm.tsx'
+import PatientForm from './pages/PatientForm.tsx'
 
 function App() {
   return (
@@ -38,7 +40,9 @@ function App() {
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/facilities" element={<Facilities />} />
               <Route path="/terms-conditions" element={<TermsConditions/>} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path='/appointments/new' element={<AppointmentForm />} />
+              <Route path="/patients/new" element={<PatientForm />} />
             </Routes>
           </div>
           <Footer />

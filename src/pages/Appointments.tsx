@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useUser } from '../contexts/UserContext'
 import { Calendar as CalendarIcon, Plus } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 interface Appointment {
   patient: string
@@ -12,6 +13,7 @@ interface Appointment {
 
 function Appointments() {
   const { user } = useUser()
+  const navigate = useNavigate()
   const [appointments] = useState<Appointment[]>([
     {
       patient: 'Sarah Johnson',
@@ -160,8 +162,8 @@ function Appointments() {
         
           {user && ['Admin', 'Receptionist'].includes(user.role) && (
             <>
-            <Plus size={18} className="me-1" />
-            <button className="btn btn-primary">New Appointment</button></>
+            
+            <button className="btn btn-primary" onClick={() => navigate('/appointments/new')}><Plus size={18} className="me-1" /> New Appointment</button></>
           )}
 
       </div>

@@ -171,7 +171,7 @@ const SignUp = () => {
                                         <option value="Patient">Select Role</option>
                                         <option value="Patient">Patient</option>
                                         <option value="Admin">Admin</option>
-                                        <option value="Doctor">Doctor</option>
+                                        <option value="Dentist">Doctor</option>
                                         <option value="Receptionist">Receptionist</option>
                                     </select>
                                 </div>
