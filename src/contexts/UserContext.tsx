@@ -2,13 +2,13 @@ import  { createContext, useContext, useState, ReactNode, useEffect } from 'reac
 
 export type UserRole = 'Admin' | 'Dentist' | 'Receptionist' | 'Patient'
 
-interface User {
-  id: string
-  name: string
-  email: string
-  role: UserRole
+export interface User {
+  name: string;
+  email: string;
+  mobile: string;
+  password: string;
+  role: string;
 }
-
 interface UserContextType {
   user: User | null
   login: (email: string, password: string, role: UserRole) => Promise<void>
@@ -18,31 +18,43 @@ interface UserContextType {
 export const UserContext = createContext<UserContextType | undefined>(undefined)
 
 export function UserProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null)
+  const [user, setUser] = useState<User | null>(
+    localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null
+  );
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(user));
   }, [user]);
+
   const login = async (email: string, password: string, role: UserRole) => {
-    // Mock login - replace with actual API call
-    const mockUser: User = {
-      id: '1',
-      name: 'Ragavan' ,
-      email: email,
-      role: role,
+    // Retrieve all users from local storage
+    const storedUsers = localStorage.getItem('users');
+    const users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
+
+    // Validate the user credentials
+    const foundUser = users.find(
+      (u) => u.email === email && u.password === password && u.role === role
+    );
+
+    if (!foundUser) {
+      throw new Error('Invalid email, password, or role');
     }
-    setUser(mockUser)
-  }
+
+    // Set the authenticated user
+    setUser(foundUser);
+    localStorage.setItem('user', JSON.stringify(foundUser));
+  };
 
   const logout = () => {
-    setUser(null)
-  }
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   return (
     <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
-  )
+  );
 }
 
 export function useUser() {

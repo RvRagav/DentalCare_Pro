@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../contexts/UserContext.tsx'
-import { Lock } from 'lucide-react'
+import { Eye, EyeOff, Lock } from 'lucide-react'
 import { UserRole } from '../contexts/UserContext.tsx';
 
 function Login() {
@@ -17,7 +17,7 @@ function Login() {
         e.preventDefault()
         try {
             await login(email, password, role)
-            localStorage.setItem('user', JSON.stringify({ name:'Ragavan', email, role }))
+            
             navigate('/dashboard')
         } catch (error) {
             console.error('Login failed:', error)
@@ -80,7 +80,7 @@ function Login() {
                                             className="btn btn-outline-secondary"
                                             onClick={() => setShowPassword(!showPassword)}
                                         >
-                                            <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                         </button>
                                     </div>
                                     {error.includes('Password') && <div className="invalid-feedback">{error}</div>}

@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { User } from '../contexts/UserContext';
+import { Eye, EyeOff } from 'lucide-react';
+
 const SignUp = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -10,6 +13,10 @@ const SignUp = () => {
     const [role, setRole] = useState('Patient');
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [users, setUsers] = useState<User[]>(() => {
+        const storedUsers = localStorage.getItem('users');
+        return storedUsers ? JSON.parse(storedUsers) : [];
+    });
     const navigate = useNavigate();
 
     const handleSignup = (e: React.FormEvent) => {
@@ -19,9 +26,19 @@ const SignUp = () => {
             setError('All fields are required');
             return;
         }
-        console.log('Signed up:', { name, email, password });
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
 
-        // Navigate to the login page
+        const newUser: User = { name, email, mobile, password, role };
+        const updatedUsers = [...users, newUser];
+
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        setUsers(updatedUsers);
+
+        console.log('Signed up:', newUser);
+
         navigate('/login');
     };
 
@@ -111,7 +128,7 @@ const SignUp = () => {
                                             className="btn btn-outline-secondary"
                                             onClick={() => setShowPassword(!showPassword)}
                                         >
-                                            <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                         </button>
                                     </div>
                                     {error && error.includes('Password') && (
@@ -141,7 +158,7 @@ const SignUp = () => {
                                             className="btn btn-outline-secondary"
                                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                         >
-                                            <i className={`bi ${showConfirmPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                                            {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                         </button>
                                     </div>
                                     {error && error.includes('match') && (
@@ -155,7 +172,13 @@ const SignUp = () => {
                                         <option value="Patient">Patient</option>
                                         <option value="Admin">Admin</option>
                                         <option value="Doctor">Doctor</option>
+                                        <option value="Receptionist">Receptionist</option>
                                     </select>
+                                </div>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="terms">
+                                        <input type="checkbox" id="terms" required /> I agree to the terms and conditions
+                                    </label>
                                 </div>
                                 <button type="submit" className="btn btn-primary mt-3">
                                     Sign Up

@@ -1,6 +1,6 @@
 import { useUser } from '../contexts/UserContext.tsx'
-import { User, Mail, Phone, MapPin } from 'lucide-react'
-
+import { User as Prof, Mail, Phone, MapPin } from 'lucide-react'
+import { User } from '../contexts/UserContext.tsx'
 function Profile() {
   const { user } = useUser()
 
@@ -12,7 +12,7 @@ function Profile() {
             <div className="card-body text-center">
               <div className="mb-3">
                 <div className="rounded-circle bg-primary text-white d-inline-flex p-3">
-                  <User size={48} />
+                  <Prof size={48} />
                 </div>
               </div>
               <h4>{user?.name}</h4>
@@ -28,7 +28,7 @@ function Profile() {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title mb-4">Profile Information</h5>
-              
+
               <div className="mb-3">
                 <div className="d-flex align-items-center mb-2">
                   <Mail size={18} className="text-primary me-2" />
@@ -42,7 +42,7 @@ function Profile() {
                   <Phone size={18} className="text-primary me-2" />
                   <strong>Phone</strong>
                 </div>
-                <p className="text-muted">(555) 123-4567</p>
+                <p className="text-muted">{user?.mobile}</p>
               </div>
 
               <div className="mb-3">
@@ -51,21 +51,52 @@ function Profile() {
                   <strong>Address</strong>
                 </div>
                 <p className="text-muted">
-                  123 Medical Center Dr.<br />
-                  Suite 100<br />
-                  Los Angeles, CA 90001
+                  123 Radha nagar.<br />
+                  Chromepet<br />
+                  Chennai - 600044<br />
+                  Tamil Nadu, India
                 </p>
               </div>
 
               <hr />
 
               <h5 className="card-title mb-4">Security Settings</h5>
-              
+
               <div className="mb-3">
-                <button className="btn btn-outline-primary me-2">
+                <button
+                  className="btn btn-outline-primary me-2"
+                  onClick={() => {
+                    const newPassword = prompt("Enter your new password:");
+                    if (newPassword) {
+                      console.log("Password changed to:", newPassword);
+                      user!.password = newPassword;
+                      localStorage.setItem('user', JSON.stringify(user));
+                      const storedUsers = localStorage.getItem('users');
+                      let users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
+
+                      const foundUser = users.find(
+                        (u) => u.email === user?.email && u.role === user?.role
+                      );
+                      if (foundUser) {
+                        foundUser.password = newPassword;
+                        localStorage.setItem('users', JSON.stringify(users));
+                      }
+                      alert("Password changed successfully!");
+                    }
+                  }}
+                >
                   Change Password
                 </button>
-                <button className="btn btn-outline-danger">
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => {
+                    const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+                    if (confirmDelete) {
+                      console.log("Account deleted");
+                      alert("Your account has been deleted.");
+                    }
+                  }}
+                >
                   Delete Account
                 </button>
               </div>
