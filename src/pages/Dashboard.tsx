@@ -1,6 +1,7 @@
 import { useUser } from '../contexts/UserContext.tsx'
 import { Users, Calendar, Activity, IndianRupee } from 'lucide-react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Dashboard() {
   const { user } = useUser()
@@ -8,7 +9,7 @@ function Dashboard() {
     user.name = 'Ragavan'
   }
   const [recentAppointments] = useState([
-    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-28, 10:00 AM', status: 'Confirmed' },
+    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-28, 12:00 PM', status: 'Confirmed' },
     { patient: 'Mike Smith', dentist: 'Dr. Johnson', date: '2025-04-19, 11:30 AM', status: 'Pending' },
     { patient: 'Emma Davis', dentist: 'Dr. Ragavan', date: '2025-04-20, 2:00 PM', status: 'In Progress' },
     { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-22, 3:00 PM', status: 'Completed' },
@@ -113,15 +114,15 @@ function Dashboard() {
                 {recentAppointments
                   .filter((a) => user?.role === 'Dentist' ? a.dentist.includes(user.name) : true)
                   .map((a, index) => (
-                  <tr key={index}>
-                    <td>{a.patient}</td>
-                    <td>{a.date}</td>
-                    <td>
-                    <span className={`badge bg-${getStatusColor(a.status)}`}>
-                      {a.status}
-                    </span>
-                    </td>
-                  </tr>
+                    <tr key={index}>
+                      <td>{a.patient}</td>
+                      <td>{a.date}</td>
+                      <td>
+                        <span className={`badge bg-${getStatusColor(a.status)}`}>
+                          {a.status}
+                        </span>
+                      </td>
+                    </tr>
                   ))}
               </tbody>
             </table>
@@ -149,15 +150,15 @@ function Dashboard() {
                 {recentPatients
                   .filter((p) => user?.role === 'Dentist' ? p.dentist.includes(user.name) : true)
                   .map((p, index) => (
-                  <tr key={index}>
-                    <td>{p.name}</td>
-                    <td>{p.lastVisit}</td>
-                    <td>
-                    <span className={`badge bg-${getStatusColor(p.status)}`}>
-                      {p.status}
-                    </span>
-                    </td>
-                  </tr>
+                    <tr key={index}>
+                      <td>{p.name}</td>
+                      <td>{p.lastVisit}</td>
+                      <td>
+                        <span className={`badge bg-${getStatusColor(p.status)}`}>
+                          {p.status}
+                        </span>
+                      </td>
+                    </tr>
                   ))}
               </tbody>
             </table>
@@ -182,68 +183,71 @@ function Dashboard() {
   return (
     <div className="container mt-5">
       <div className="text-center mb-4">
-      <h1 className="mb-4">Welcome, {user?.name}</h1>
+        <h1 className="mb-4">Welcome, {user?.name}</h1>
 
-      <div className="row g-4 text-center d-flex justify-content-center overflow-hidden">
-        {renderCards()}
-      </div>
-
-      <div className="row m-4 g-4"> 
-        {['Admin', 'Dentist', 'Receptionist'].includes(user?.role || '') && renderAppointmentsTable()}
-        {['Admin', 'Dentist', 'Receptionist'].includes(user?.role || '') && renderPatientsTable()}
-        {user?.role === 'Patient' && (
-            <div className="row g-4">
-            <div className="col-lg-6 col-sm-12">
-              <div className="card text-center shadow">
-              <div className="card-body">
-                <h5 className="card-title">Your Upcoming Appointments</h5>
-                <ul className="list-group list-group-flush">
-                {recentAppointments
-                  .filter((a) => new Date(a.date) >= new Date() && a.patient === user?.name)
-                  .map((a, idx) => (
-                  <li
-                    key={idx}
-                    className="list-group-item d-flex justify-content-between align-items-center p-3"
-                  >
-                    {a.date} - {a.patient}
-                    <span className={`badge bg-${getStatusColor(a.status)}`}>
-                    {a.status}
-                    </span>
-                  </li>
-                  ))}
-                </ul>
-              </div>
-              </div>
-            </div>
-            <div className="col-lg-6 col-sm-12">
-              <div className="card text-center shadow">
-              <div className="card-body">
-                <h5 className="card-title">Your Past Appointments</h5>
-                <ul className="list-group list-group-flush">
-                {recentAppointments
-                  .filter((a) => new Date(a.date) < new Date() && a.patient === user?.name)
-                  .map((a, idx) => (
-                  <li
-                  key={idx}
-                  className="list-group-item d-flex justify-content-between align-items-center p-3"
-                  >
-                  {a.date} - {a.patient}
-                  <span className={`badge bg-${getStatusColor(a.status)}`}>
-                  {a.status}
-                  </span>
-                  </li>
-                  ))}
-                </ul>
-              </div>
-              </div>
-            </div>
-            </div>
-            
-        )}
+        <div className="row g-4 text-center d-flex justify-content-center overflow-hidden">
+          {renderCards()}
         </div>
-      </div>
-      <div className="text-center mt-4 ">
-        <p className="text-muted">© 2025 Dental Clinic. All rights reserved.</p>
+
+        <div className="row m-4 g-4">
+          {['Admin', 'Dentist', 'Receptionist'].includes(user?.role || '') && renderAppointmentsTable()}
+          {['Admin', 'Dentist', 'Receptionist'].includes(user?.role || '') && renderPatientsTable()}
+          {user?.role === 'Patient' && (
+            <>
+            <div className="row g-4">
+              <div className="col-lg-6 col-sm-12">
+                <div className="card text-center shadow">
+                  <div className="card-body">
+                    <h5 className="card-title">Your Upcoming Appointments</h5>
+                    <ul className="list-group list-group-flush">
+                      {recentAppointments
+                        .filter((a) => new Date(a.date) >= new Date() && a.patient === user?.name)
+                        .map((a, idx) => (
+                          <li
+                            key={idx}
+                            className="list-group-item d-flex justify-content-between align-items-center p-3"
+                          >
+                            {a.date} - {a.dentist}
+                            <span className={`badge bg-${getStatusColor(a.status)}`}>
+                              {a.status}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-6 col-sm-12">
+                <div className="card text-center shadow">
+                  <div className="card-body">
+                    <h5 className="card-title">Your Past Appointments</h5>
+                    <ul className="list-group list-group-flush">
+                      {recentAppointments
+                        .filter((a) => new Date(a.date) < new Date() && a.patient === user?.name)
+                        .map((a, idx) => (
+                          <li
+                            key={idx}
+                            className="list-group-item d-flex justify-content-between align-items-center p-3"
+                          >
+                            {a.date} - {a.dentist}
+                            <span className={`badge bg-${getStatusColor(a.status)}`}>
+                              {a.status}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <Link to="/appointments/new" className="btn btn-primary mt-3">
+                Book an Appointment
+              </Link>
+            </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

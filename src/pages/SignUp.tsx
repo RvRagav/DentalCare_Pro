@@ -82,9 +82,9 @@ const SignUp = () => {
                                             }   
                                         }}
                                     />
-                                    {/* {error && error.includes('email') && (
+                                    {error && error.includes('email') && (
                                         <div className="invalid-feedback">{error}</div>
-                                    )} */}
+                                    )}
                                 </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="mobile">Mobile Number</label>

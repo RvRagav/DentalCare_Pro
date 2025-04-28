@@ -8,7 +8,7 @@ interface Patient {
   name: string
   phone: string
   email: string
-  lastVisit: string // ISO
+  lastVisit: string 
   nextVisit: string | null
   status: 'Active' | 'Follow-up' | 'Inactive'
 }

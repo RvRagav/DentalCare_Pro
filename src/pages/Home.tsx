@@ -3,8 +3,8 @@ import { Goal, Telescope } from 'lucide-react'
 const Home = () => {
     return (
         <>
-            <section 
-                className="hero-section text-center mb-5" 
+            <section
+                className="hero-section text-center mb-5"
                 style={{
                     backgroundImage: 'url(/src/assets/dental1.webp)',
                     backgroundSize: 'cover',
@@ -19,16 +19,16 @@ const Home = () => {
                 <p className='fw-semibold'>Our team of experienced professionals is dedicated to personalized care, utilizing the latest technology and techniques for a comfortable and effective treatment experience.</p>
                 <Link to="/about" className="btn btn-primary btn-lg mt-3">Learn More About Us</Link>
             </section>
-         
+
 
             <div className="row row-cols-1 row-cols-md-2 g-4">
-                
+
                 <div className="col">
                     <div className="card h-100 bg-light">
                         <div className="card-body d-flex align-items-center">
-                            
+
                             <div>
-                                <h5 className="card-title d-flex align-items-center fw-bold"><Goal size={48} color='orange'/>Mission</h5>
+                                <h5 className="card-title d-flex align-items-center fw-bold"><Goal size={48} color='orange' />Mission</h5>
                                 <p className="card-text fw-semibold">Our mission is to deliver exceptional dental care and improve oral health outcomes for our community.</p>
                                 <p className="card-text fw-semibold">We strive to create a welcoming environment where patients feel comfortable and cared for.</p>
                                 <p className="card-text fw-semibold">Our goal is to educate our patients about their oral health and empower them to make informed decisions.</p>
@@ -40,7 +40,7 @@ const Home = () => {
                     <div className="card h-100 bg-light">
                         <div className="card-body d-flex align-items-center">
                             <div>
-                                <h5 className="card-title d-flex align-items-center fw-bold"><Telescope size={48} color='green'/>Vision</h5>
+                                <h5 className="card-title d-flex align-items-center fw-bold"><Telescope size={48} color='green' />Vision</h5>
                                 <p className="card-text fw-semibold">To be the leading dental care provider known for innovative treatment and compassionate care.</p>
                                 <p className="card-text fw-semibold">We envision a future where everyone has access to high-quality dental care.</p>
                                 <p className="card-text fw-semibold">Our commitment to excellence drives us to continuously improve our services and facilities.</p>
@@ -67,7 +67,7 @@ const Home = () => {
                                 <h5 className="card-title">Dental Cleaning</h5>
                                 <img src="/src/assets/dental_cleaning.avif" alt="Dental Cleaning" className="card-img-top" style={{ height: '150px', objectFit: 'cover' }} />
                                 <p className="card-text">Keep your teeth clean and healthy with our professional cleaning services.</p>
-                                
+
                             </div>
                         </div>
                         <div className="card mx-2" style={{ minWidth: '250px' }}>
@@ -75,7 +75,7 @@ const Home = () => {
                                 <h5 className="card-title">Root Canal</h5>
                                 <img src="/src/assets/rootcanal.avif" alt="Root Canal" className="card-img-top" style={{ height: '150px', objectFit: 'cover' }} />
                                 <p className="card-text">Effective treatment to save and repair infected or damaged teeth.</p>
-                                
+
                             </div>
                         </div>
                         <div className="card mx-2" style={{ minWidth: '250px' }}>
@@ -85,7 +85,7 @@ const Home = () => {
                                 <p className="card-text">Brighten your smile with our safe and effective whitening treatments.</p>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div className="align-items-center text-center mt-3">
                         <Link to="/treatments" className="btn btn-primary">See More Treatments</Link>
@@ -117,14 +117,14 @@ const Home = () => {
                                 <p className="card-text">Comfortable and modern dental chairs with LED lighting.</p>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div className=" text-center mt-3">
                         <Link to="/facilities" className="btn btn-primary">See More Facilities</Link>
                     </div>
                 </div>
             </div>
-            
+
 
             <div className="row row-cols-1 row-cols-md-2 g-4 mt-4">
                 <div className="col">
@@ -147,9 +147,9 @@ const Home = () => {
                             </ul>
                         </div>
                     </div>
-                    </div>
                 </div>
-            
+            </div>
+
         </>
     );
 }

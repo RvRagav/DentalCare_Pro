@@ -38,14 +38,14 @@ function Appointments() {
     },
     {
       patient: 'Ragavan',
-      dateTime: '2025-04-26T15:00:00',
+      dateTime: '2025-04-29T15:00:00',
       treatment: 'Dental Checkup',
       dentist: 'Dr. Smith',
       status: 'Confirmed',
     },
     {
       patient: 'John Doe',
-      dateTime: '2024-04-23T16:00:00',
+      dateTime: '2025-04-30T16:00:00',
       treatment: 'Teeth Whitening',
       dentist: 'Dr. Johnson',
       status: 'Pending',

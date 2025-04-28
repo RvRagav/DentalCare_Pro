@@ -31,7 +31,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
     const storedUsers = localStorage.getItem('users');
     const users: User[] = storedUsers ? JSON.parse(storedUsers) : [];
 
-    // Validate the user credentials
     const foundUser = users.find(
       (u) => u.email === email && u.password === password && u.role === role
     );
@@ -40,7 +39,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
       throw new Error('Invalid email, password, or role');
     }
 
-    // Set the authenticated user
     setUser(foundUser);
     localStorage.setItem('user', JSON.stringify(foundUser));
   };
