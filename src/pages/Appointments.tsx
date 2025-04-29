@@ -24,9 +24,9 @@ function Appointments() {
     },
     {
       patient: 'Mike Wilson',
-      dateTime: '2024-03-20T11:30:00',
+      dateTime: '2025-04-30T11:30:00',
       treatment: 'Root Canal',
-      dentist: 'Dr. Johnson',
+      dentist: 'Dr. Ragavan',
       status: 'Pending',
     },
     {

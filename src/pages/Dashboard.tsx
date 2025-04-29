@@ -9,7 +9,7 @@ function Dashboard() {
     user.name = 'Ragavan'
   }
   const [recentAppointments] = useState([
-    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-28, 12:00 PM', status: 'Confirmed' },
+    { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-30, 12:00 PM', status: 'Confirmed' },
     { patient: 'Mike Smith', dentist: 'Dr. Johnson', date: '2025-04-19, 11:30 AM', status: 'Pending' },
     { patient: 'Emma Davis', dentist: 'Dr. Ragavan', date: '2025-04-20, 2:00 PM', status: 'In Progress' },
     { patient: 'Ragavan', dentist: 'Dr. Smith', date: '2025-04-22, 3:00 PM', status: 'Completed' },
