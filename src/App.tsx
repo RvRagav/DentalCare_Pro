@@ -39,8 +39,8 @@ function App() {
               <Route path="/treatments" element={<Treatments />} />
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/facilities" element={<Facilities />} />
-              <Route path="/terms-conditions" element={<TermsConditions/>} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/termsconditions" element={<TermsConditions/>} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy />} />
               <Route path='/appointments/new' element={<AppointmentForm />} />
               <Route path="/patients/new" element={<PatientForm />} />
             </Routes>

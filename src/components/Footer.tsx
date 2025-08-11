@@ -18,10 +18,10 @@ function Footer() {
             <h5>Links</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="/privacy-policy" className="text-white">Privacy Policy</a>
+                <a href="/privacypolicy" className="text-white">Privacy Policy</a>
               </li>
               <li>
-                <a href="/terms-conditions" className="text-white">Terms of Service</a>
+                <a href="/termsconditions" className="text-white">Terms of Service</a>
               </li>
             </ul>
           </div>
