@@ -7,9 +7,9 @@ interface Treatment {
 }
 
 const treatments: Treatment[] = [
-    { name: 'Dental Cleaning',img_url: '/src/assets/dental_cleaning.avif', description: 'Professional cleaning to remove plaque and tartar.', price: '₹1,500' },
-    { name: 'Root Canal',img_url: '/src/assets/rootcanal.avif', description: 'Treatment to repair and save a badly damaged or infected tooth.', price: '₹5,000' },
-    { name: 'Teeth Whitening',img_url: '/src/assets/teeth_whitening.avif', description: 'Procedure to lighten the color of your teeth.', price: '₹3,000' },
+    { name: 'Dental Cleaning',img_url: '/assets/dental_cleaning.avif', description: 'Professional cleaning to remove plaque and tartar.', price: '₹1,500' },
+    { name: 'Root Canal',img_url: '/assets/rootcanal.avif', description: 'Treatment to repair and save a badly damaged or infected tooth.', price: '₹5,000' },
+    { name: 'Teeth Whitening',img_url: '/assets/teeth_whitening.avif', description: 'Procedure to lighten the color of your teeth.', price: '₹3,000' },
     { name: 'Dental Implants', img_url: 'https://media.istockphoto.com/id/1412853972/photo/mandibular-prosthesis-all-on-4-system-supported-by-implants.webp?a=1&b=1&s=612x612&w=0&k=20&c=xY6719i5NFgDdt09dvPDrfdfKBTD1IaRatpQ0kj8G7U=', description: 'Surgical component that interfaces with the bone of the jaw.', price: '₹20,000' },
 ];
 

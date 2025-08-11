@@ -11,21 +11,21 @@ function Facilities() {
                             <h5 className="card-title">Instruments</h5>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item d-flex align-items-start">
-                                    <img src="/src/assets/digital_x-ray.avif" alt="Digital X-Ray" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+                                    <img src="/assets/digital_x-ray.avif" alt="Digital X-Ray" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
                                     <div>
                                         <h6 className="mb-1">Digital X-Ray</h6>
                                         <p className="mb-0 text-muted">High-quality imaging for accurate diagnosis.</p>
                                     </div>
                                 </li>
                                 <li className="list-group-item d-flex align-items-start">
-                                    <img src="/src/assets/panoromic_xray.webp" alt="Panoramic X-Ray" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+                                    <img src="/assets/panoromic_xray.webp" alt="Panoramic X-Ray" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
                                     <div>
                                         <h6 className="mb-1">Panoramic X-Ray</h6>
                                         <p className="mb-0 text-muted">Comprehensive view of the entire mouth.</p>
                                     </div>
                                 </li>
                                 <li className="list-group-item d-flex align-items-start">
-                                    <img src="/src/assets/dental_chair.avif" alt="Dental Chair with LED Light" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
+                                    <img src="/assets/dental_chair.avif" alt="Dental Chair with LED Light" className="me-3" style={{ width: "50px", height: "50px", objectFit: "cover" }} />
                                     <div>
                                         <h6 className="mb-1">Dental Chair with LED Light</h6>
                                         <p className="mb-0 text-muted">Comfortable and modern dental chairs.</p>
